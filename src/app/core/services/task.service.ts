@@ -27,11 +27,8 @@ export class TaskService {
     const project = data.projects.find((p: { id: string; }) => p.id === projectId);
     const task = project.tasks.find((t: { id: string; }) => t.id === taskId);
     this.timeTracker.stop(task);
-
     task.columnId = toColumnId;
-
     this.timeTracker.start(task, toColumnId);
-
     this.storage.setData(data);
   }
   deleteTask(projectId: string, taskId: string) {
