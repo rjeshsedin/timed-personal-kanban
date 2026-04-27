@@ -1,0 +1,9 @@
+<a class="card" [routerLink]="['/projects', project.id]">
+  <div class="title">{{ project.name }}</div>
+  <div class="meta">
+    <span>{{ project.tasks.length }} tasks</span>
+    <span>·</span>
+    <span>{{ project.columns.length }} columns</span>
+  </div>
+</a>
+

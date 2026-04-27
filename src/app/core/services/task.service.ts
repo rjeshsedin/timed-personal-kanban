@@ -12,6 +12,7 @@ export class TaskService {
   addTask(projectId: string, columnId: string, title: string) {
     const data = this.storage.getData();
     const project = data.projects.find((p: { id: string; }) => p.id === projectId);
+    if (!project) return;
     const task: Task = {
       id: crypto.randomUUID(),
       title,
@@ -25,7 +26,9 @@ export class TaskService {
   moveTask(projectId: string, taskId: string, toColumnId: string) {
     const data = this.storage.getData();
     const project = data.projects.find((p: { id: string; }) => p.id === projectId);
+    if (!project) return;
     const task = project.tasks.find((t: { id: string; }) => t.id === taskId);
+    if (!task) return;
     this.timeTracker.stop(task);
     task.columnId = toColumnId;
     this.timeTracker.start(task, toColumnId);
@@ -34,6 +37,7 @@ export class TaskService {
   deleteTask(projectId: string, taskId: string) {
     const data = this.storage.getData();
     const project = data.projects.find((p: { id: string; }) => p.id === projectId);
+    if (!project) return;
     project.tasks = project.tasks.filter((t: { id: string; }) => t.id !== taskId);
     this.storage.setData(data);
   }

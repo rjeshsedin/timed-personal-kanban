@@ -1,0 +1,13 @@
+<form class="create" (ngSubmit)="submit()">
+  <input
+    class="input"
+    name="projectName"
+    [(ngModel)]="name"
+    placeholder="New project name"
+    required
+  />
+  <button class="button" type="submit" [disabled]="!name.trim()">
+    Create
+  </button>
+</form>
+

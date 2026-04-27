@@ -1,0 +1,50 @@
+@if (!project()) {
+  <section class="page">
+    <button class="link" type="button" (click)="backToProjects()">← Projects</button>
+    <p class="muted">Project not found.</p>
+  </section>
+} @else {
+  <section class="page">
+    <header class="topbar">
+      <button class="link" type="button" (click)="backToProjects()">← Projects</button>
+      <div class="title">{{ project()!.name }}</div>
+      <button class="button" type="button" (click)="openAddColumn()">+ Column</button>
+    </header>
+
+    <div class="board">
+      @for (col of columns(); track col.id) {
+        <app-column
+          [column]="col"
+          [tasks]="tasksFor(col.id)"
+          [columns]="columns()"
+          [completedColumnId]="completedColumnId()"
+          (taskAdded)="addTask($event)"
+          (taskDeleted)="deleteTask($event)"
+          (taskDropped)="moveTask($event)"
+          (editColumn)="openEditColumn($event)"
+          (deleteColumn)="requestDeleteColumn($event)"
+        />
+      }
+    </div>
+
+    <app-add-column-dialog
+      [open]="addDialogOpen"
+      [title]="addDialogTitle"
+      [initialName]="addDialogInitialName"
+      (cancelled)="closeAddDialog()"
+      (saved)="saveColumn($event)"
+    />
+
+    @if (moveFromColumn) {
+      <app-move-tasks-dialog
+        [open]="moveDialogOpen"
+        [fromColumn]="moveFromColumn"
+        [availableTargets]="moveTargets"
+        [taskCount]="moveTaskCount"
+        (cancelled)="cancelMoveDialog()"
+        (confirmed)="confirmMoveDialog($event)"
+      />
+    }
+  </section>
+}
+

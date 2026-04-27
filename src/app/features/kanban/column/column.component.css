@@ -1,1 +1,92 @@
-// placeholder
+.column {
+  width: 300px;
+  flex: 0 0 auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 0.75rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0;
+}
+
+.name {
+  font-weight: 700;
+  color: var(--text);
+  flex: 1;
+  letter-spacing: -0.01em;
+}
+
+.count {
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+}
+
+.icon {
+  border: 1px solid var(--border);
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+  padding: 0.25rem 0.45rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+}
+
+.icon.danger {
+  color: #111;
+}
+
+.dropzone {
+  min-height: 120px;
+  border: 1px dashed transparent;
+  border-radius: 12px;
+  padding: 0.25rem;
+}
+
+.dropzone.drop-target {
+  border-color: #111;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.tasks {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.add {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input {
+  flex: 1;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+  background: #fff;
+}
+
+.button {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #111;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

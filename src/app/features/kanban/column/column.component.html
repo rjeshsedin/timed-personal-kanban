@@ -1,1 +1,38 @@
-// placeholder
+<section class="column">
+  <header class="header">
+    <div class="name">{{ column.name }}</div>
+    <div class="count">{{ tasks.length }}</div>
+
+    @if (!locked) {
+      <button class="icon" type="button" (click)="editColumn.emit(column)" aria-label="Edit column">
+        Edit
+      </button>
+      <button class="icon danger" type="button" (click)="deleteColumn.emit(column)" aria-label="Delete column">
+        Delete
+      </button>
+    }
+  </header>
+
+  <div class="dropzone" appDrop (dropped)="onDropped($event)">
+    <div class="tasks">
+      @for (task of tasks; track task.id) {
+        <app-task-card
+          [task]="task"
+          [columns]="columns"
+          [completedColumnId]="completedColumnId"
+          (delete)="taskDeleted.emit($event)"
+        />
+      }
+    </div>
+  </div>
+
+  <form class="add" (ngSubmit)="submitTask()">
+    <input
+      class="input"
+      name="title"
+      [(ngModel)]="newTitle"
+      placeholder="Add task"
+    />
+    <button class="button" type="submit" [disabled]="!newTitle.trim()">Add</button>
+  </form>
+</section>
