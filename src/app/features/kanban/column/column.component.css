@@ -1,0 +1,12 @@
+.column h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.column button {
+  padding: 6px 8px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* placeholder */

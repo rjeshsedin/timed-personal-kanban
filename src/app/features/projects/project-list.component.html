@@ -1,0 +1,11 @@
+<div style="padding:20px;">
+  <h2>Projects</h2>
+  <button routerLink="/projects/create">Create Project</button>
+  <div *ngIf="projects.length === 0" style="margin-top:16px;">No projects yet.</div>
+  <ul>
+    <li *ngFor="let p of projects" style="margin:8px 0;">
+      <span>{{p.name}}</span>
+      <button (click)="openProject(p.id)" style="margin-left:12px;">Open</button>
+    </li>
+  </ul>
+</div>
