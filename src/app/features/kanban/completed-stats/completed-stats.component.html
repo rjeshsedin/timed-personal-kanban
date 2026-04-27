@@ -1,0 +1,16 @@
+<div class="stats">
+  <div class="title">Time breakdown</div>
+  @if (rows().length === 0) {
+    <div class="muted">No time tracked yet.</div>
+  } @else {
+    <ul class="list">
+      @for (row of rows(); track row.columnId) {
+        <li class="item">
+          <span class="name">{{ row.columnName }}</span>
+          <span class="time">{{ row.ms | timeFormat }}</span>
+        </li>
+      }
+    </ul>
+  }
+</div>
+

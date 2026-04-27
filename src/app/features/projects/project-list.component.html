@@ -1,0 +1,23 @@
+<section class="page">
+  <header class="page-header">
+    <div>
+      <h1>Projects</h1>
+      @if (userName(); as name) {
+        <p class="muted">Hi {{ name }}.</p>
+      }
+    </div>
+  </header>
+
+  <app-create-project (created)="refresh()" />
+
+  <div class="grid">
+    @for (project of projects(); track project.id) {
+      <app-project-card [project]="project" />
+    }
+  </div>
+
+  @if (projects().length === 0) {
+    <p class="muted empty">No projects yet. Create your first one above.</p>
+  }
+</section>
+

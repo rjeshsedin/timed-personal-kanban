@@ -1,0 +1,14 @@
+@if (open) {
+  <div class="backdrop" (click)="cancel()"></div>
+  <div class="modal" role="dialog" aria-modal="true">
+    <h2>{{ title }}</h2>
+    <form (ngSubmit)="save()" class="form">
+      <input class="input" name="name" [(ngModel)]="name" placeholder="Column name" />
+      <div class="actions">
+        <button class="button secondary" type="button" (click)="cancel()">Cancel</button>
+        <button class="button" type="submit" [disabled]="!name.trim()">Save</button>
+      </div>
+    </form>
+  </div>
+}
+

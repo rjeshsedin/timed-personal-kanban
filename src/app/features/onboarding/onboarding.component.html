@@ -1,0 +1,21 @@
+<section class="card">
+  <h1>Welcome</h1>
+  <p class="muted">What should I call you?</p>
+
+  <form (ngSubmit)="submit()" class="form">
+    <label class="label" for="name">Your name</label>
+    <input
+      id="name"
+      name="name"
+      class="input"
+      [(ngModel)]="name"
+      autocomplete="name"
+      placeholder="e.g. Rajesh"
+      required
+    />
+
+    <button class="button" type="submit" [disabled]="!name.trim()">
+      Continue
+    </button>
+  </form>
+</section>

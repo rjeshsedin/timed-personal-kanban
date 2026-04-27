@@ -1,0 +1,38 @@
+@if (open) {
+  <div class="backdrop" (click)="cancel()"></div>
+  <div class="modal" role="dialog" aria-modal="true">
+    <h2>Delete “{{ fromColumn.name }}”</h2>
+    <p class="muted">
+      This column has {{ taskCount }} task(s). Choose where to move them before deleting.
+    </p>
+
+    <div class="modes">
+      <label class="radio">
+        <input type="radio" name="mode" value="existing" [(ngModel)]="mode" [ngModelOptions]="{ standalone: true }" />
+        Move to an existing column
+      </label>
+      <label class="radio">
+        <input type="radio" name="mode" value="new" [(ngModel)]="mode" [ngModelOptions]="{ standalone: true }" />
+        Move to a new column
+      </label>
+    </div>
+
+    @if (mode === 'existing') {
+      <select class="select" [(ngModel)]="selectedTargetId" name="target">
+        @for (c of availableTargets; track c.id) {
+          <option [value]="c.id">{{ c.name }}</option>
+        }
+      </select>
+    } @else {
+      <input class="input" [(ngModel)]="newColumnName" name="newName" placeholder="New column name" />
+    }
+
+    <div class="actions">
+      <button class="button secondary" type="button" (click)="cancel()">Cancel</button>
+      <button class="button danger" type="button" (click)="confirm()" [disabled]="!canConfirm()">
+        Move & delete
+      </button>
+    </div>
+  </div>
+}
+

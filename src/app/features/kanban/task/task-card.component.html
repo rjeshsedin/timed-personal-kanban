@@ -1,0 +1,12 @@
+<article class="task" [appDrag]="task.id">
+  <div class="row">
+    <div class="title">{{ task.title }}</div>
+    <button class="icon" type="button" (click)="delete.emit(task.id)" aria-label="Delete task">
+      ✕
+    </button>
+  </div>
+
+  @if (isCompleted) {
+    <app-completed-stats [task]="task" [columns]="columns" />
+  }
+</article>

@@ -1,0 +1,44 @@
+.task {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.6rem 0.65rem;
+  cursor: grab;
+  transition: border-color 120ms ease;
+}
+
+.task:hover {
+  border-color: #d7dbe6;
+}
+
+.task:active {
+  cursor: grabbing;
+}
+
+.row {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: 0.95rem;
+  color: #222;
+  word-break: break-word;
+}
+
+.icon {
+  border: 1px solid transparent;
+  background: transparent;
+  color: #777;
+  cursor: pointer;
+  padding: 0.1rem 0.35rem;
+  border-radius: 8px;
+}
+
+.icon:hover {
+  border-color: rgba(11, 16, 32, 0.10);
+  color: #0b1020;
+  background: rgba(255, 255, 255, 0.55);
+}
